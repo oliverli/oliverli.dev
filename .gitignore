@@ -1,6 +1,10 @@
 _site/
 .jekyll-cache/
+<<<<<<< HEAD
 .htaccess
 _config.yml
 .DS_Store
 .sass-cache/
+=======
+.sass-cache/
+>>>>>>> ef88682 (First commit)
