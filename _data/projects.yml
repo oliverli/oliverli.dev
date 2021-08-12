@@ -1,17 +1,22 @@
 # projects section data
 # If you don't have language feature(language.yml is empty), ignore "i18n" items
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
+- name: Stripe 1099 Data Export API
+  img: stripe.jpg
+  link: https://stripe.com/docs/connect/modify-tax-forms
+  desc: Implemented a user facing 1099 data export API despite numerous scaling challenges, and also built a tax data computation pipeline using Scala, Spark, and Airflow as part of the Tax Reporting team. Consistently pushed for the most user-friendly implementation, performed high quality, rigorous, and actionable code reviews, achieving all internship project targets including stretch goals.
+
 - name: Autolab
   gh_user: autolab
   repo: Autolab
   img: /images/autolab.svg
-  desc: Autolab is an autograder for Computer Science assignments used at CMU and other colleges. I developed features such as code annotations and a more user-friendly grading interface as part of the team hired to maintain the project, and also deployed and tested a migration from Rails 4 to Rails 5.
+  desc: Autolab is an autograder for Computer Science assignments used at CMU and other universities. I collected and responded to user feedback, driving changes such as a more user-friendly grading interface, improved timezone support, and better code annotations.
 
 - name: Isomer
   gh_user: isomerpages
   repo: isomerpages-template
   img: /images/isomer.png
-  desc: Isomer is a Jekyll theme designed to power the corporate websites of most Singaporean government agencies. As part of the team working on Isomer, I initiated an overhaul of the codebase eliminating technical debt and reducing workload on end users, provided support for end users, and oversaw the smooth operation of all Isomer sites.
+  desc: Isomer is a Jekyll theme designed to power the corporate websites of most Singaporean government agencies. As part of the team working on Isomer, I initiated an overhaul of the codebase eliminating technical debt and reducing workload on end users, provided support for end users, and oversaw the smooth operation of all 20+ Isomer sites.
 
 - name: Go.gov.sg
   gh_user: opengovsg
