@@ -3,11 +3,6 @@ layout: null
 sitemap:
   exclude: 'yes'
 ---
-function toggleMobileMenu() {
-  $('.navigation-wrapper').toggleClass('visible');
-  $('.btn-mobile-menu__icon').toggleClass('hidden');
-  $('.btn-mobile-close__icon').toggleClass('hidden');
-}
 
 $(document).ready(function () {
   $('a.panel-button').click(function (e) {
@@ -42,13 +37,13 @@ $(document).ready(function () {
   }
 
   $('.btn-mobile-menu').click(function () {
-    if (!$('.navigation-wrapper').hasClass('animated bounceInDown')){
-        $('.navigation-wrapper').addClass('animated bounceInDown');
-    }
-    toggleMobileMenu();
+    $('.navigation-wrapper').toggleClass('visible animated bounceInDown')
+    $('.btn-mobile-menu__icon').toggleClass('icon-list icon-x-circle animated fadeIn')
   })
 
   $('.navigation-wrapper .projects-button').click(function () {
-    toggleMobileMenu();
+    console.log("click")
+    $('.navigation-wrapper').toggleClass('visible')
+    $('.btn-mobile-menu__icon').toggleClass('icon-list icon-x-circle animated fadeIn')
   })
 })
