@@ -2,7 +2,7 @@
 # If you don't have language feature(language.yml is empty), ignore "i18n" items
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
 - name: Stripe 1099 Data Export API
-  img: stripe.jpg
+  img: /images/stripe.jpg
   link: https://stripe.com/docs/connect/modify-tax-forms
   desc: Implemented a user facing 1099 data export API despite numerous scaling challenges, and also built a tax data computation pipeline using Scala, Spark, and Airflow as part of the Tax Reporting team. Consistently pushed for the most user-friendly implementation, performed high quality, rigorous, and actionable code reviews, achieving all internship project targets including stretch goals.
 
