@@ -13,7 +13,6 @@ $(document).ready(function () {
       $('.panel-cover').animate({'width': '100%'}, 400, swing = 'swing', function () {})
       $('.content-wrapper').removeClass('showing')
       history.pushState("", document.title, window.location.pathname + window.location.search);
-      //window.location.hash = '' // leaves #
       e.preventDefault();
       return;
     }
@@ -43,7 +42,6 @@ $(document).ready(function () {
   })
 
   $('.navigation-wrapper .projects-button').click(function () {
-    console.log("click")
     $('.navigation-wrapper').toggleClass('visible')
     $('.btn-mobile-menu__icon').toggleClass('icon-list icon-x-circle animated fadeIn')
   })
