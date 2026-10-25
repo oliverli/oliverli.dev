@@ -1,131 +1,607 @@
----
-layout: default
-robots: noindex
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oliver Li — Software Engineer</title>
+  <meta name="description" content="Oliver Li is a Software Engineer at Datadog in NYC working on developer platforms, integration APIs, and distributed systems. Formerly Nuvo, Stripe, CMU ECE. From Singapore.">
+  <meta name="author" content="Oliver Li">
 
-<span class="mobile btn-mobile-menu">
-  <i class="icon icon-list btn-mobile-menu__icon"></i>
-  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
-</span>
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oliverli.dev/">
+  <meta property="og:title" content="Oliver Li — Software Engineer">
+  <meta property="og:description" content="Software Engineer at Datadog building developer platforms, integration APIs, and distributed systems. Previously Nuvo, Stripe, CMU. From Singapore.">
+  <meta property="og:image" content="https://oliverli.dev/images/profile.jpg">
 
-<header class="panel-cover" style="background-image: url({{ site.baseurl }}{{ site.bkimage }})">
-  <div class="panel-main">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oliver Li — Software Engineer">
+  <meta name="twitter:description" content="Software Engineer at Datadog building developer platforms, integration APIs, and distributed systems. Previously Nuvo, Stripe, CMU. From Singapore.">
+  <meta name="twitter:image" content="https://oliverli.dev/images/profile.jpg">
 
-    <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-        <a href="{{ site.baseurl }}/" title="link to home of {{ site.title }}">
-          <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
-          <h1 class="panel-cover__title panel-title">Hi, I'm Oliver</h1>
-        </a>
-        <hr class="panel-cover__divider">
-        <p class="panel-cover__description">Highly-driven and motivated self-taught developer passionate in all things tech! <i class="fas fa-laptop"></i></p>
-        <hr class="panel-cover__divider panel-cover__divider">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="images/favicons/favicon.ico">
 
-        <div class="navigation-wrapper">
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 
-          <nav class="cover-navigation navigation--social">
-            <ul class="navigation">
+  <!-- Immediate Theme Determination to Prevent Flash of Unstyled Theme -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="bg-grid"></div>
 
-            {% if site.author.twitter_username %}
-              <!-- Twitter -->
-              <li class="navigation__item">
-                <a href="https://twitter.com/{{ site.author.twitter_username }}" title="@{{ site.author.twitter_username }} on Twitter" target="_blank">
-                  <!--<i class="icon icon-social-twitter"></i>-->
-                  <i class="fab fa-twitter fa-lg"></i>
-                  <span class="label">Twitter</span>
-                </a>
-              </li>
-            {% endif %}
+  <!-- Site Navigation -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Oliver Li Home">
+        <span class="logo__badge">OL</span>
+        <span>Oliver Li</span>
+      </a>
 
-            {% if site.author.facebook_username %}
-              <!-- Facebook -->
-              <li class="navigation__item">
-                <a href="https://fb.me/{{ site.author.facebook_username }}" title="{{ site.author.facebook_username }} on Facebook" target="_blank">
-                  <i class="fab fa-facebook fa-lg"></i>
-                  <span class="label">Facebook</span>
-                </a>
-              </li>
-            {% endif %}
+      <nav class="nav" aria-label="Main Navigation">
+        <ul class="nav__links">
+          <li><a href="#experience" class="nav__link">Experience</a></li>
+          <li><a href="#projects" class="nav__link">Projects</a></li>
+          <li><a href="#about" class="nav__link">About</a></li>
+        </ul>
 
-            {% if site.author.linkedin_username %}
-              <!-- LinkedIn -->
-              <li class="navigation__item">
-                <a href="https://www.linkedin.com/in/{{ site.author.linkedin_username }}" title="{{ site.author.linkedin_username }} on LinkedIn" target="_blank">
-                  <!--<i class="icon icon-social-linkedin"></i>-->
-                  <i class="fab fa-linkedin fa-lg"></i>
-                  <span class="label">LinkedIn</span>
-                </a>
-              </li>
-            {% endif %}
-
-            {% if site.author.github_username %}
-              <!-- GitHub -->
-              <li class="navigation__item">
-                <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
-                  <!--<i class="icon icon-social-github"></i>-->
-                  <i class="fab fa-github fa-lg"></i>
-                  <span class="label">GitHub</span>
-                </a>
-              </li>
-            {% endif %}
-
-            {% if site.author.meetup_name %}
-            <!-- Meetup -->
-            <li class="navigation__item">
-              <a href="https://www.meetup.com/{{ site.author.meetup_name }}" title="Meetup {{ site.author.meetup_name }}" target="_blank">
-                <!--<div style="font-size: 1.4rem;"><i class="fab fa-meetup fa-lg"></i></div>-->
-                <i class="fab fa-meetup fa-lg"></i>
-                <span class="label">Meetup</span>
-              </a>
-            </li>
-            {% endif %}
-
-            {% if site.author.email %}
-              <!-- Email -->
-              <li class="navigation__item">
-                <a href="mailto:{{ site.author.email }}" title="Email {{ site.author.email }}" target="_blank">
-                  <!--<i class="icon icon-mail"></i>-->
-                  <i class="fas fa-envelope fa-lg"></i>
-                  <span class="label">Email</span>
-                </a>
-              </li>
-            {% endif %}
-
-            </ul>
-          </nav>
-          
-          <!--<nav class="cover-navigation cover-navigation--primary">-->
-          <nav class="cover-navigation navigation--social">
-            <ul class="navigation">
-              <li class="navigation__item"><a href="{{ site.baseurl }}/#" title="Projects" class="panel-button projects-button" id="projects-button-id"><i class="fas fa-file-code fa-lg"></i>&nbsp;Projects</a></li>
-            </ul>
-          </nav>
-
+        <div class="header__actions">
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" aria-label="View Resume PDF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Resume
+          </a>
+          <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+            <svg id="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg id="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
         </div>
-        <!-- <div class="timeline-panel">
-          <div class="timeline-heading">
-            <h4><a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" target="_blank">{{ project.name }}</a></h4>
-          </div>
-          <div class="timeline-body">
-            {% if project.desc %}
-              {{ project.desc | markdownify }}
-            {% else %}
-            <div repotext="{{ project.repo }}">
-              <span class="desc"></div>
-            </div>
-            {% endif %}
-            <div user="{{ project.gh_user }}" repo="{{ project.repo }}" class="ghbtn" style="margin-top: 10px;">
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers"><i class="fa fa-star"></i><span class="star"> ...</span></a>&emsp;&emsp;
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network"><i class="fa fa-code-fork"></i><span class="fork"> ...</span></a>&emsp;&emsp;
-              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/watchers"><i class="far fa-eye"></i><span class="watchers"> ...</span></a>
-              <div style="height: 10px;"></div>
-          </div> -->
-        </div>
-
-      </div>
-
+      </nav>
     </div>
+  </header>
 
-    <div class="panel-cover--overlay"></div>
-  </div>
-</header>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <div class="hero__status">
+            <span class="hero__status-dot"></span>
+            Software Engineer II @ Datadog &bull; New York City
+          </div>
+
+          <h1 class="hero__title">
+            Hi, I'm <span class="hero__title-gradient">Oliver Li</span>.
+          </h1>
+
+          <p class="hero__subtitle">
+            I build software people <strong>love</strong>: delightful developer platforms, integration APIs, and resilient backend systems. Currently working on <a href="https://www.datadoghq.com/blog/internal-applications-datadog-apps/" target="_blank" rel="noopener noreferrer"><strong>Datadog Apps</strong></a> in New York City.
+          </p>
+
+          <p class="hero__bio-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 7.2c0 7.3-8 11.8-8 11.8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>From Singapore &bull; Carnegie Mellon ECE &bull; Based in NYC</span>
+          </p>
+
+          <div class="hero__cta-group">
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Resume (PDF)
+            </a>
+            <a href="#experience" class="btn btn-outline">
+              View Experience
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+
+          <div class="hero__social">
+            <a href="https://github.com/oliverli" target="_blank" rel="noopener noreferrer" class="hero__social-link" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            &bull;
+            <a href="https://www.linkedin.com/in/o-li" target="_blank" rel="noopener noreferrer" class="hero__social-link" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            &bull;
+            <a href="mailto:itsme@oliverli.dev" class="hero__social-link" title="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>itsme@oliverli.dev</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="hero__card">
+          <div class="hero__card-inner">
+            <img src="images/profile.jpg" alt="Oliver Li" class="hero__image" width="320" height="320">
+            <div class="hero__card-caption">
+              <div class="hero__card-name">Oliver Li</div>
+              <div class="hero__card-role">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Software Engineer II &bull; Datadog
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Career</span>
+          <h2 class="section__title">Work Experience</h2>
+          <p class="section__desc">
+            A track record of building mission-critical developer tools, distributed backends, and financial infrastructure.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <!-- Datadog -->
+          <div class="timeline-item timeline-item--current">
+            <div class="timeline-item__marker">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card__header">
+                <div>
+                  <h3 class="timeline-card__role">Software Engineer II</h3>
+                  <div class="timeline-card__company"><a href="https://www.datadoghq.com/" target="_blank" rel="noopener noreferrer">Datadog</a> &bull; App Builder &amp; Datadog Apps</div>
+                </div>
+                <div class="timeline-card__period">Jun 2024 &ndash; Present</div>
+              </div>
+              <div class="timeline-card__location">New York, NY</div>
+              <ul class="timeline-card__bullets">
+                <li>
+                  <strong>High-Performance Schema Validation (Go + Rust via cgo):</strong> Re-architected <a href="https://www.datadoghq.com/product/app-builder/" target="_blank" rel="noopener noreferrer">App Builder</a> API validation with a Rust engine via cgo, slashing p99 latency from <strong>1.6s to 187ms</strong> <span class="metric-badge">&darr; 88% latency</span> with zero-leak FFI boundary design.
+                </li>
+                <li>
+                  <strong>Datadog Apps Tooling Ecosystem:</strong> Proposed and built the developer toolchain for native apps, including <a href="https://www.npmjs.com/package/@datadog/apps-cli" target="_blank" rel="noopener noreferrer">@datadog/apps-cli</a>, <a href="https://www.npmjs.com/package/@datadog/create-apps" target="_blank" rel="noopener noreferrer">@datadog/create-apps</a>, <a href="https://github.com/DataDog/build-plugins" target="_blank" rel="noopener noreferrer">build-plugins</a> (Vite/Rollup), and the <a href="https://github.com/DataDog/apps-github-action" target="_blank" rel="noopener noreferrer">apps-github-action</a> CI/CD pipeline.
+                </li>
+                <li>
+                  <strong>Native SDLC &amp; Governance:</strong> Designed platform permission models and multi-editor review workflows requiring peer approvals before deployment, bringing PR-like governance natively into the browser.
+                </li>
+                <li>
+                  <strong>Typed Error Architecture:</strong> Standardized error handling across App Builder, Datastores, and Forms around a unified typed error abstraction with actionable field-level feedback.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Nuvo -->
+          <div class="timeline-item">
+            <div class="timeline-item__marker">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card__header">
+                <div>
+                  <h3 class="timeline-card__role">Software Engineer</h3>
+                  <div class="timeline-card__company"><a href="https://nuvo.com/" target="_blank" rel="noopener noreferrer">Nuvo</a></div>
+                </div>
+                <div class="timeline-card__period">Jan 2023 &ndash; May 2024</div>
+              </div>
+              <div class="timeline-card__location">New York, NY</div>
+              <ul class="timeline-card__bullets">
+                <li>Designed and implemented Nuvo's integration with NetSuite (and authored the public <a href="https://intercom.help/nuvo-credit/en/articles/7967840-netsuite-integration-instructions" target="_blank" rel="noopener noreferrer">NetSuite Integration Guide</a>), with bidirectional syncing of customer and accounts receivable ledgers; built real-time trade credit exposure monitoring dashboards for credit managers.</li>
+                <li>Shipped an asynchronous task queue service using the <a href="https://arq-docs.helpmanual.io/" target="_blank" rel="noopener noreferrer">ARQ</a> library with Redis; added dead-letter queues, static typing support, and an operational dashboard, eliminating latency from the core application.</li>
+                <li>Built an idempotent batch backfill pipeline for importing legacy approved credit applications on customer onboarding; enforced data integrity via EIN-matching and rate-limited imports to throttle downstream notifications safely.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stripe -->
+          <div class="timeline-item">
+            <div class="timeline-item__marker">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card__header">
+                <div>
+                  <h3 class="timeline-card__role">Software Engineer</h3>
+                  <div class="timeline-card__company"><a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">Stripe</a> &bull; Credit Card Clearing</div>
+                </div>
+                <div class="timeline-card__period">Jun 2022 &ndash; Nov 2022</div>
+              </div>
+              <div class="timeline-card__location">Seattle, WA</div>
+              <ul class="timeline-card__bullets">
+                <li>Implemented transaction hold and release mechanisms in Stripe's next-generation Java financial clearing pipeline, ensuring funds settled on time and in full.</li>
+                <li>Investigated and mitigated merchant-facing race conditions in the clearing service, reducing the p99 latency of a major Kafka consumer by 85%.</li>
+                <li>Automated repetitive partner-network oncall procedures, building batch scripts to surface transactions needing Mastercard and card-network operational intervention.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Earlier Experience Note -->
+          <div class="timeline-item">
+            <div class="timeline-item__marker">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card__header">
+                <div>
+                  <h3 class="timeline-card__role">Previous Roles &amp; Internships</h3>
+                  <div class="timeline-card__company">Stripe &bull; Open Government Products &bull; Singapore Armed Forces</div>
+                </div>
+                <div class="timeline-card__period">2017 &ndash; 2021</div>
+              </div>
+              <ul class="timeline-card__bullets">
+                <li><strong><a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">Stripe</a> (Software Engineer Intern, Summers 2020 &amp; 2021):</strong> Zero-downtime Java gRPC service migration reducing p99 latency by 80%; engineered Scala, Spark, and Airflow tax pipelines and user-facing <a href="https://stripe.com/docs/connect/modify-tax-forms?method=csv" target="_blank" rel="noopener noreferrer">1099 data export APIs</a>.</li>
+                <li><strong><a href="https://www.open.gov.sg/" target="_blank" rel="noopener noreferrer">Open Government Products</a> (Software Engineer Intern, 2019):</strong> Re-architected <a href="https://www.isomer.gov.sg/" target="_blank" rel="noopener noreferrer">Isomer</a> web infrastructure and built <a href="https://go.gov.sg/" target="_blank" rel="noopener noreferrer">go.gov.sg</a> backend APIs, cutting government site deployment costs by over 90%.</li>
+                <li><strong>Singapore Armed Forces (2017 &ndash; 2019):</strong> System Administrator overseeing secure mission networks during high-security national operations, including the 2018 Trump-Kim Summit in Singapore. Promoted to Corporal First Class.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Projects Grid -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Portfolio</span>
+          <h2 class="section__title">Selected Projects &amp; Open Source</h2>
+          <p class="section__desc">
+            Highlights from platforms, developer tools, and open-source civic software I've helped build and maintain.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Datadog Apps CLI -->
+          <div class="project-card">
+            <div class="project-card__top">
+              <div class="project-card__icon" style="background: rgba(124, 58, 237, 0.15); color: #a78bfa;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+              </div>
+              <span class="tag">CLI / Node.js</span>
+            </div>
+            <h3 class="project-card__title">@datadog/apps-cli</h3>
+            <p class="project-card__desc">
+              The official command-line interface for authoring, running local development servers, and publishing code-first Datadog Apps directly into the Datadog platform.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Datadog</span>
+            </div>
+            <div class="project-card__footer">
+              <a href="https://www.npmjs.com/package/@datadog/apps-cli" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                npm package &rarr;
+              </a>
+              <a href="https://docs.datadoghq.com/actions/datadog_apps/" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Docs &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Datadog Build Plugins -->
+          <div class="project-card">
+            <div class="project-card__top">
+              <div class="project-card__icon" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              </div>
+              <span class="tag">Open Source</span>
+            </div>
+            <h3 class="project-card__title">DataDog/build-plugins</h3>
+            <p class="project-card__desc">
+              Universal bundler plugins (Vite, Rollup, Webpack, esbuild) handling sourcemap injection, debug telemetry, and bundle packaging for Datadog web ecosystems.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Rollup</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Bundlers</span>
+            </div>
+            <div class="project-card__footer">
+              <a href="https://github.com/DataDog/build-plugins" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                GitHub Repo &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Stripe 1099 API -->
+          <div class="project-card">
+            <div class="project-card__top">
+              <div class="project-card__icon">
+                <img src="images/stripe.jpg" alt="Stripe">
+              </div>
+              <span class="tag">Finance / API</span>
+            </div>
+            <h3 class="project-card__title">Stripe 1099 Data Export API</h3>
+            <p class="project-card__desc">
+              Designed user-facing 1099 tax reporting export APIs and large-scale data computation pipelines using Scala, Apache Spark, and Airflow under high-throughput requirements.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Java</span>
+              <span class="tag">Scala</span>
+              <span class="tag">Spark</span>
+              <span class="tag">Airflow</span>
+            </div>
+            <div class="project-card__footer">
+              <a href="https://stripe.com/docs/connect/modify-tax-forms" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Stripe Docs &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Autolab -->
+          <div class="project-card">
+            <div class="project-card__top">
+              <div class="project-card__icon">
+                <img src="images/autolab.svg" alt="Autolab">
+              </div>
+              <span class="tag">EdTech / CMU</span>
+            </div>
+            <h3 class="project-card__title">Autolab Project</h3>
+            <p class="project-card__desc">
+              CMU's open-source automated grading platform for CS courses. Contributed code annotations, modernized grading interfaces, and conducted a major Ruby on Rails framework upgrade.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Ruby on Rails</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Docker</span>
+            </div>
+            <div class="project-card__footer">
+              <a href="https://github.com/autolab/Autolab" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                GitHub Repo &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Isomer -->
+          <div class="project-card">
+            <div class="project-card__top">
+              <div class="project-card__icon">
+                <img src="images/isomer.png" alt="Isomer">
+              </div>
+              <span class="tag">Civic Tech</span>
+            </div>
+            <h3 class="project-card__title">Isomer (GovTech Singapore)</h3>
+            <p class="project-card__desc">
+              Static site architecture allowing dozens of Singapore public agencies to deploy fast, accessible, secure government portals. Proud that our original "Isomer Classic" architecture reliably served Singapore's public digital presence for 7+ years as GovTech now transitions to <a href="https://support.isomer.gov.sg/en/collections/17999187-moving-from-classic-to-next" target="_blank" rel="noopener noreferrer">Isomer Next</a>.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">JAMstack</span>
+              <span class="tag">Static Gen</span>
+              <span class="tag">Accessibility</span>
+            </div>
+            <div class="project-card__footer">
+              <a href="https://www.isomer.gov.sg" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                isomer.gov.sg &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- GoGovSG -->
+          <div class="project-card">
+            <div class="project-card__top">
+              <div class="project-card__icon">
+                <img src="images/gogovsg.png" alt="Go.gov.sg">
+              </div>
+              <span class="tag">Civic Tech</span>
+            </div>
+            <h3 class="project-card__title">Go.gov.sg Link Shortener</h3>
+            <p class="project-card__desc">
+              Official trusted government link shortening service in Singapore. Built high-traffic analytics and link routing API endpoints as part of an agile 4-person team at Open Government Products.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">React</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="project-card__footer">
+              <a href="https://go.gov.sg" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                go.gov.sg &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About, Skills & Education -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Background</span>
+          <h2 class="section__title">Skills &amp; Education</h2>
+        </div>
+
+        <div class="about-grid">
+          <!-- Skills -->
+          <div class="info-card">
+            <h3 class="info-card__title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              Technical Expertise
+            </h3>
+
+            <div class="skills-group">
+              <div class="skills-group__label">Languages</div>
+              <div class="skills-pills">
+                <span class="skill-pill">Go</span>
+                <span class="skill-pill">TypeScript / JavaScript</span>
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">Java</span>
+                <span class="skill-pill">Scala</span>
+                <span class="skill-pill">C</span>
+                <span class="skill-pill">SQL</span>
+              </div>
+            </div>
+
+            <div class="skills-group">
+              <div class="skills-group__label">Platforms, Tooling &amp; Systems</div>
+              <div class="skills-pills">
+                <span class="skill-pill">CLI Design</span>
+                <span class="skill-pill">Vite &amp; Bundlers</span>
+                <span class="skill-pill">React</span>
+                <span class="skill-pill">Vue.js</span>
+                <span class="skill-pill">Redis</span>
+                <span class="skill-pill">Kafka</span>
+                <span class="skill-pill">Docker &amp; Linux</span>
+                <span class="skill-pill">GitHub Actions / CI/CD</span>
+                <span class="skill-pill">Networking (TCP/IP)</span>
+                <span class="skill-pill">JSON Schema</span>
+              </div>
+            </div>
+
+            <div class="skills-group" style="margin-bottom:0;">
+              <div class="skills-group__label">Personal &amp; Languages</div>
+              <div class="skills-pills">
+                <span class="skill-pill">English (native)</span>
+                <span class="skill-pill">Chinese (near-native)</span>
+                <span class="skill-pill">German (A2)</span>
+                <span class="skill-pill">General Aviation</span>
+                <span class="skill-pill">Computing History</span>
+                <span class="skill-pill">Board Games</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="info-card">
+            <h3 class="info-card__title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              Education &amp; Academic Leadership
+            </h3>
+
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.25rem;">
+                <h4 style="font-size:1.15rem; font-weight:700;">Carnegie Mellon University</h4>
+                <span style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);">2019 &ndash; 2022</span>
+              </div>
+              <div style="color:var(--link-color); font-weight:600; font-size:0.95rem; margin-bottom:0.75rem;">
+                B.S. in Electrical &amp; Computer Engineering (GPA: 3.85 / 4.0)
+              </div>
+              <p style="color:var(--text-secondary); font-size:0.925rem; line-height:1.6; margin-bottom:1rem;">
+                Graduated CMU in 3 years with university honors, focusing on distributed systems, network protocols, hardware/software interface, and computer security.
+              </p>
+              <ul class="timeline-card__bullets">
+                <li><strong>Teaching Assistant, 15-441 Computer Networks:</strong> Mentored students implementing full TCP protocol stacks (handshakes, sliding window, congestion control) from scratch.</li>
+                <li><strong>Selected Coursework:</strong> Computer Networks (15-441), Embedded Systems (18-349), Hardware/Software Interface (18-344), Computer Security (18-330).</li>
+                <li><strong>Founding Member, Coding 4 Children (Singapore):</strong> Taught introductory programming to underprivileged students.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resume Call-to-action Banner -->
+        <div style="margin-top: 3.5rem;">
+          <div class="resume-banner">
+            <div class="resume-banner__content">
+              <h3>Interested in working together?</h3>
+              <p>
+                Download a concise one-page summary of my experience, engineering impact, and technical background.
+              </p>
+            </div>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download Resume (PDF)
+              </a>
+              <a href="mailto:itsme@oliverli.dev" class="btn btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        &copy; <span id="year">2026</span> Oliver Li. Built with modern vanilla HTML/CSS &bull; Hosted on GitHub Pages.
+      </div>
+      <div class="footer__links">
+        <a href="https://github.com/oliverli" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/o-li" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:itsme@oliverli.dev">Email</a>
+        <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle & Media Query Listener -->
+  <script>
+    (function() {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      const moonIcon = document.getElementById('moon-icon');
+      const sunIcon = document.getElementById('sun-icon');
+      const yearSpan = document.getElementById('year');
+
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      function updateIcons(theme) {
+        if (theme === 'light') {
+          moonIcon.style.display = 'block';
+          sunIcon.style.display = 'none';
+        } else {
+          moonIcon.style.display = 'none';
+          sunIcon.style.display = 'block';
+        }
+      }
+
+      function setTheme(theme, isExplicitUserAction) {
+        root.setAttribute('data-theme', theme);
+        if (isExplicitUserAction) {
+          localStorage.setItem('theme', theme);
+        }
+        updateIcons(theme);
+      }
+
+      // Initialize icon state
+      const initialTheme = root.getAttribute('data-theme') || 'dark';
+      updateIcons(initialTheme);
+
+      // Listen for OS theme preference changes if user hasn't explicitly set a preference
+      if (window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addEventListener('change', function(e) {
+          if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light', false);
+          }
+        });
+      }
+
+      // Explicit toggle button click
+      toggle.addEventListener('click', function() {
+        const currentTheme = root.getAttribute('data-theme');
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(nextTheme, true);
+      });
+    })();
+  </script>
+</body>
+</html>

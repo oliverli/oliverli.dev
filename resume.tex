@@ -1,0 +1,467 @@
+\documentclass[11pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	ENCODING
+%----------------------------------------------------------------------------------------
+
+%we use utf8 since we want to build from any machine
+\usepackage[utf8]{inputenc}		
+
+%----------------------------------------------------------------------------------------
+%	LOGIC
+%----------------------------------------------------------------------------------------
+
+% provides \isempty test
+\usepackage{xifthen}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% some tex-live fonts - choose your own
+
+%\usepackage[defaultsans]{droidsans}
+%\usepackage[default]{comfortaa}
+%\usepackage{cmbright}
+\usepackage[scale=.97]{raleway}
+%\usepackage[scaled=.92]{helvet}
+%\usepackage{fetamont}
+%\usepackage[default]{gillius}
+%\usepackage[light,math]{iwona}
+%\usepackage{roboto} 
+\usepackage{fontawesome}
+% set font default
+\renewcommand*\familydefault{\sfdefault} 	
+\usepackage[T1]{fontenc}
+
+% more font size definitions
+\usepackage{moresize}		
+
+
+%----------------------------------------------------------------------------------------
+%	PAGE LAYOUT  DEFINITIONS
+%----------------------------------------------------------------------------------------
+
+%debug page outer frames
+%\usepackage{showframe}			
+
+
+%define page styles using geometry
+\usepackage[letterpaper]{geometry}		
+
+% for example, change the margins to 2 inches all round
+\geometry{top=2cm, bottom=-.6cm, left=1.5cm, right=1.5cm} 	
+
+%use customized header
+\usepackage{fancyhdr}				
+\pagestyle{fancy}
+
+%less space between header and content
+\setlength{\headheight}{-5pt}		
+
+
+%customize entries left, center and right
+%\lhead{}
+%\chead{}
+%\rhead{}
+
+
+%indentation is zero
+\setlength{\parindent}{0mm}
+
+%----------------------------------------------------------------------------------------
+%	TABLE /ARRAY DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for layouting tables
+\usepackage{multicol}			
+\usepackage{multirow}
+
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+%extended aligning of tabular cells
+\usepackage{array}
+
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+
+%----------------------------------------------------------------------------------------
+%	GRAPHICS DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for header image
+\usepackage{graphicx}
+
+%for floating figures
+\usepackage{wrapfig}
+\usepackage{float}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+
+%for drawing graphics		
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+
+%----------------------------------------------------------------------------------------
+%	Color DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+\usepackage{color}
+
+%accent color
+\definecolor{sectcol}{RGB}{0,51,153}
+
+%dark background color
+\definecolor{bgcol}{RGB}{60,60,60}
+
+%light background / accent color
+\definecolor{softcol}{RGB}{185,185,185}
+
+
+%============================================================================%
+%
+%
+%	DEFINITIONS
+%
+%
+%============================================================================%
+
+%----------------------------------------------------------------------------------------
+% 	HEADER
+%----------------------------------------------------------------------------------------
+
+% remove top header line
+\renewcommand{\headrulewidth}{0pt} 
+
+%remove botttom header line
+\renewcommand{\footrulewidth}{0pt}	  	
+
+%remove pagenum
+\renewcommand{\thepage}{}	
+
+%remove section num		
+\renewcommand{\thesection}{}			
+
+%----------------------------------------------------------------------------------------
+% 	ARROW GRAPHICS in Tikz
+%----------------------------------------------------------------------------------------
+
+% a six pointed arrow poiting to the left
+\newcommand{\tzlarrow}{(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}	
+
+% include the left arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\larrow}[1]
+{\begin{tikzpicture}[scale=0.58]
+	 \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
+ \end{tikzpicture}
+}
+
+% a six pointed arrow poiting to the right
+\newcommand{\tzrarrow}{ (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
+
+% include the right arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\rarrow}
+{\begin{tikzpicture}[scale=0.7]
+	\filldraw[fill=sectcol!100,draw=sectcol!100!black] \tzrarrow
+ \end{tikzpicture}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	custom sections
+%----------------------------------------------------------------------------------------
+
+% create a coloured box with arrow and title as cv section headline
+% param 1: section title
+%
+\newcommand{\cvsection}[1]
+{
+	\begin{center}
+		\large\textcolor{sectcol}{\textbf{#1}}
+	\end{center}
+}
+
+%create a coloured arrow with title as cv meta section section
+% param 1: meta section title
+%
+\newcommand{\metasection}[2]
+{
+%\begin{tabular*}{1\textwidth}{r r}
+\footnotesize{#2} \hspace*{\fill} \footnotesize{#1}\\[1pt]
+%\end{tabular*}
+}
+
+%----------------------------------------------------------------------------------------
+%	 CV EVENT
+%----------------------------------------------------------------------------------------
+
+% creates a stretched box as cv entry headline followed by two paragraphs about 
+% the work you did
+% param 1:	event time i.e. 2014 or 2011-2014 etc.
+% param 2:	event name (what did you do?)
+% param 3:	institution (where did you work / study)
+% param 4:	what was your position
+% param 5:	some words about your contributions
+%
+\newcommand{\cvevent}[4]
+{
+
+\begin{tabular*}{1\textwidth}{p{13.6cm}  x{3.9cm}}
+	\textbf{#2} - \textcolor{bgcol}{#3} &   \vspace{2.5pt}\textcolor{sectcol}{#1}
+\end{tabular*}
+
+\vspace{-8pt}
+\textcolor{softcol}{\hrule}
+\vspace{-3pt}
+    #4
+}
+
+% creates a stretched box as 
+\newcommand{\cveventmeta}[2]
+{
+	\mbox{\mystrut \hspace{87pt}\textit{#1}}\\
+	#2
+}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM STRUT FOR EMPTY BOXES
+%----------------------------------------- -----------------------------------------------
+\newcommand{\mystrut}{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM LOREM IPSUM
+%----------------------------------------------------------------------------------------
+\newcommand{\lorem}
+{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.}
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT CONTENT
+%
+%
+%
+%============================================================================%
+\begin{document}
+
+
+%use our custom fancy header definitions
+\pagestyle{fancy}	
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	HEADER IMAGE
+%----------------------------------------------------------------------------------------
+
+%\begin{figure}[H]
+%\begin{flushright}
+%	\includegraphics[trim= 320 130 460 210,clip,width=0.2\linewidth]{myfoto.jpg}	%trimming relative to image size!
+%\end{flushright}
+%\end{figure}
+
+
+%---------------------------------------------------------------------------------------
+%	TITLE HEADLINE
+%----------------------------------------------------------------------------------------
+\vspace{-8pt}
+\begin{center}
+	\HUGE \textsc{Oliver Li}\\[2pt]
+	%\small Aspiring Software Engineering Intern and Passionate Tech Enthusiast
+\end{center}
+
+
+
+\vspace{6pt}
+
+
+%---------------------------------------------------------------------------------------
+%	META SECTION
+%----------------------------------------------------------------------------------------
+\metasection{\faEnvelope ~ \href{mailto:itsme@oliverli.dev}{itsme@oliverli.dev}}{\textbf{Skills:} Go, Scala, TypeScript, Python, Vue.js, Java, C, Computer Networks, Git, Linux, \LaTeX}
+\metasection{\faPhone ~ \href{tel:+14015529927}{+1~(401)~552~9927}}{\textbf{Interests:} Computing History, Board Games, Personal Finance, General Aviation, Operating Systems} 
+\metasection{\faGithub ~ \href{https://github.com/oliverli/}{oliverli}}{\textbf{Languages:} English (native), Chinese (near-native), German (entry level, A2)}
+\metasection{\faLinkedin ~ \href{https://www.linkedin.com/in/o-li}{o-li}}{\textbf{Location:} New York City}
+\vspace{-2pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\normalsize
+
+%---------------------------------------------------------------------------------------
+%	SUMMARAY (optional)
+%----------------------------------------------------------------------------------------
+%\vspace{-6pt}
+%\cvsection{Summary}
+%Digital media graduate with project experience in the field of technology based assessment. Currently working as IT Consultant at We4IT, Bremen in the field of IBM Notes Domino and XPages applications. Master studies focused on teams from different disciplines and cultural backgrounds on solutions for complex problems.\\
+
+
+%============================================================================%
+%
+%	CV SECTIONS AND EVENTS (MAIN CONTENT)
+%
+%============================================================================%
+
+%---------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+\cvsection{Experience}
+
+\cvevent{Jun 2024 - Present}{\href{https://www.datadoghq.com/}{Datadog}}{Software Engineer II, New York, NY}{
+    \begin{itemize}
+        \item Designed and implemented the public \href{https://www.datadoghq.com/product/app-builder/}{App Builder} API, with $O(n)$ JSON Schema validation of app definitions via a cgo compatibility layer calling a Rust validation library from Go; the API release enabled the official Terraform provider for App Builder
+        \item Designed App Builder's contributor permission model and an optional editor review flow (analogous to GitHub pull requests) requiring a second editor to approve changes before publication, giving teams native SDLC controls over app changes without requiring external version control
+        \item Refactored error handling across App Builder, Datastores, and Forms around a typed error abstraction that enforced actionable end-user messages (e.g. field-level validation failures rather than opaque 5xx responses) and prevented internal implementation details from surfacing in API responses
+    \end{itemize}
+}
+
+\cvevent{Jan 2023 - May 2024}{\href{https://nuvo.com/}{Nuvo}}{Software Engineer, New York, NY}{
+    \begin{itemize}
+        \item Designed and implemented Nuvo's integration with NetSuite, with bidirectional syncing of customer and accounts receivable information; built an accounts receivable dashboard for credit managers to monitor trade credit exposure
+        \item Shipped a task queue service using the \href{https://arq-docs.helpmanual.io/}{ARQ} library with Redis; implemented a dead letter queue, static type checking support, and a full-featured dashboard, enabling faster development and less latency in the core application
+        \item Built an idempotent batch backfill pipeline for importing pre-existing approved credit applications on customer onboarding; enforced data integrity via EIN-to-customer matching and a unique index on customer-supplier pairs, and deliberately rate-limited imports to throttle downstream email notifications and catch errors before propagation
+    \end{itemize}
+}
+
+\cvevent{Jun 2022 - Nov 2022}{\href{https://stripe.com/}{Stripe}}{Software Engineer, Seattle, WA}{
+    \begin{itemize}
+        \item Implemented transaction holds and releases in Stripe's next-generation Java stack as part of the credit card clearing team, ensuring funds settled on time and in full
+        \item Investigated and resolved merchant-facing race conditions in the clearing service; reduced the p99 latency of a major Kafka consumer by 85\%
+        \item Automated repetitive oncall toil, including a batch script surfacing transactions requiring manual partner intervention to Mastercard and other network partners
+    \end{itemize}
+}
+
+% \cvevent{Summer 2020 \& 2021}{\href{https://stripe.com/}{Stripe}}{Software Engineer Intern, U.S. Remote}{
+%     \begin{itemize}
+%         \item Migrated a backend service to gRPC in production, proving the correctness of the new gRPC service through rigorous tests and demonstrating a p99 latency reduction of 80\% in production
+%         \item Accomplished the gRPC migration with zero downtime as part of the Account Services team, in support of Stripe's move towards a microservices architecture built upon Java
+%         \item Built a tax data computation pipeline using Scala, Spark, and Airflow as part of the Tax Reporting team
+%         \item Implemented a \href{https://stripe.com/docs/connect/modify-tax-forms?method=csv}{user facing 1099 data export API} despite numerous scaling challenges
+%         \item Consistently pushed for the most user-friendly implementation, performed high quality, rigorous, and actionable code reviews, achieving all internship project targets including stretch goals in both years
+%     \end{itemize}
+% }
+
+%\cvevent{Sep 2019 -- Present}{DevOps Engineer}{Autolab Project, Carnegie Mellon University}{
+%    \begin{itemize}
+%        \item Implemented features such as code annotations and a more user friendly grading interface
+        
+%        \item Oversaw and tested a migration from Ruby on Rails 4 to Rails 5
+%    \end{itemize}
+%}
+
+% \cvevent{Feb 2019 -- Aug 2019}{\href{https://www.open.gov.sg/}{Open Government Products}}{Software Engineer Intern, Singapore}{
+%     \begin{itemize}
+%         \item Worked closely with engineers and PMs on products for the public good, specifically \href{https://www.isomer.gov.sg/}{Isomer} and \href{https://go.gov.sg/}{go.gov.sg}, reducing the cost on taxpayers for the government to develop and launch new websites by over 90\%
+        
+%         \item Engaged in rapid prototyping and testing of new features, initiated and completed a code rewrite of \href{https://www.isomer.gov.sg/}{Isomer}, significantly improving its usability, reducing user questions and confusion
+%     \end{itemize}
+% }
+
+%
+% \cvevent{Feb 2017 - Feb 2019}{Singapore Army}{System Administrator, Singapore}{
+%     \begin{itemize}
+%         \item Oversaw and administrated all aspects of a computer network used by the army for high security events such as the 2018 Trump-Kim Summit
+%         
+%         \item Exceeded expectations by constantly improving workflows and tackling numerous technical challenges. Promoted to the rank of Corporal First Class in recognition
+%     \end{itemize}
+% }
+
+%---------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%--------------------------------------------------------------------------------------
+\cvsection{Education}
+
+\cvevent{Aug 2019 -- May 2022}{B.S., Electrical \& Computer Engineering}{Carnegie Mellon University}{
+    \begin{itemize}
+        \item Teaching assistant for 15-441 (Computer Networks); led the TCP project, covering 3-way handshake, reliable transmission, and flow control
+        \item Other courses completed include 18-349 (Embedded Systems), 18-344 (The Hardware/Software Interface), 18-330 (Computer Security), and their prerequisites. Achieved an overall GPA of 3.85
+        \item Graduated 1 year early
+    \end{itemize}
+}
+
+%\cvevent{Jan 2011 - Dec 2016}{High School}{Hwa Chong Institution, Singapore}{
+%    \begin{itemize}
+%        \item Took the most rigorous course load possible and excelled, achieving distinctions in all 8 subjects taken
+%    \end{itemize}
+%}
+
+%\textcolor{softcol}{\hrule}
+
+%
+%\cvevent{Feb 2015 - Jun 2016}{Founding Member}{Coding 4 Children, Singapore}{
+%    \begin{itemize}
+%        \item Taught underprivileged children aged 9-12 programming fundamentals using Scratch to pique their interest in STEM and related fields
+%    \end{itemize}
+%}
+
+% \cvsection{Selected Projects}
+
+% \cvevent{Sep 2019 -- Present}{\href{http://www.autolabproject.com}{Autolab}}{Ruby on Rails, JavaScript, Python}{
+%     \begin{itemize}
+%         \item \href{http://www.autolabproject.com}{Autolab} is an autograder for Computer Science assignments used at CMU and other universities
+%         \item Collected and responded to user feedback, driving changes such as a more user-friendly grading interface, improved timezone support, and better code annotations
+%     \end{itemize}
+% }
+
+% \cvevent{Feb 2019 -- Aug 2019}{\href{https://www.isomer.gov.sg}{Isomer}}{Jekyll, JAM Stack, Web Infrastructure}{
+%     \begin{itemize}
+%         \item \href{https://www.isomer.gov.sg}{Isomer} is a Jekyll theme designed to allow Singaporean government agencies to rapidly launch modern, well designed, and accessible websites
+
+%         \item Initiated an overhaul of the codebase, eliminating technical debt and reducing workload on end users
+        
+%         \item Provided support for end users, and oversaw the smooth operation of all 20+ Isomer sites
+%     \end{itemize}
+% }
+
+%\cvevent{Feb 2019 -- Apr 2019}{\href{https://go.gov.sg/}{go.gov.sg}}{node.js, React}{
+%    \begin{itemize}
+%        \item \href{https://go.gov.sg/}{go.gov.sg} is a link shortener for Singaporean government officials to generate short URLs on the ``gov.sg'' domain that can be trusted by the public
+%        \item Created several API endpoints for statistics generation and URL management as part of a team of 4
+%    \end{itemize}
+%}
+
+%\textcolor{softcol}{\hrule}
+
+%
+%\cvevent{2011 / 11}{Project Management Simulation Training}{Getoq Consulting}{Performed a two-day project simulation from management perspective}{Topics included customer contracts, change management, controlling, operational tasks}
+
+%\textcolor{softcol}{\hrule}
+
+
+%
+%\cvevent{2010 - 2011}{Student Assistant / Programmer}{otulea.uni-bremen.de}{Realized an online diagnosis platform for workforce literacy development (Flex)}{Modeled software design, implemented various prototypes, conducted usability tests}
+
+%--------------------------------------------------------------------------------------------------
+%	ARTIFICIAL FOOTER (fancy footer cannot exceed linewidth) 
+%--------------------------------------------------------------------------------------------------
+\null
+
+\null
+%\vspace*{\fill}
+%\hspace{-0.25\linewidth}\colorbox{white}{\makebox[1.5\linewidth][c]{\mystrut  %\textnormal{
+%    \textcolor{sectcol}{\href{mailto:itsme@oliverli.dev}{itsme@oliverli.dev}} $\cdot$ \textcolor{sectcol}{\href{tel:+14015529927}{+1~(401)~552~9927}} $\cdot$ \textcolor{sectcol}{\href{https://github.com/oliverli/}{github.com/oliverli}} $\cdot$ \textcolor{sectcol}{\href{https://www.linkedin.com/in/o-li}{linkedin.com/in/o-li}}
+%}}}
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT END
+%
+%
+%
+%============================================================================%
+\end{document}
